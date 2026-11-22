@@ -41,13 +41,14 @@ News, Institute for the Study of War, Human Rights Watch.
 
 ## Run it
 
-Requires Python 3 only — no third-party packages, no system fonts.
+Requires Python 3 and Pillow — no network access, no system fonts
+(Pillow's bundled default font only).
+
+`main.py` draws the 1024×1024 front page entirely in code with Pillow
+and writes it to `/output/entry.png` (or `$MAKEFUN_OUTPUT_DIR/entry.png`).
+The output is deterministic: two runs produce byte-identical PNGs.
 
 The finished front page is stored in this repository as `entry.png`.
-`main.py` is a small copy program: it validates the PNG signature and
-size, copies the image byte-for-byte to `/output/entry.png` (or
-`$MAKEFUN_OUTPUT_DIR`), and verifies the copy with SHA-256. The output
-is deterministic: every run writes the same bytes.
 
 ```sh
 python3 main.py
